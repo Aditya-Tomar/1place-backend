@@ -8,7 +8,8 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
     try {
-        await createUserDetails();
+        const userDetails = req.body;
+        await createUserDetails(userDetails);
         res.status(200).send();
     } catch (err) {
         res.status(400).send();

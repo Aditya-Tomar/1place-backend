@@ -14,9 +14,9 @@ async function getUserDetails(userId) {
     return db.find({ _id: new ObjectId(userId) }).toArray();
 }
 
-async function createUserDetails() {
+async function createUserDetails(userDetails) {
     const db = await getUsersCollectionCon();
-    // return db.insert(userDetail);
+    return db.insert(userDetails);
 }
 
 module.exports = {
