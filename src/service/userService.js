@@ -1,8 +1,8 @@
 const { getUserDetails, createUserDetails } = require('../repository/users'); 
 
 async function getUserById(req, res) {
-    // const id = req.id;
-    const data = await getUserDetails();
+    const id = req.params.id;
+    const data = await getUserDetails(id);
     res.json({ data });
 }
 

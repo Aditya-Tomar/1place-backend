@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const { getConnection } = require('../../dbConnection/mongo');
 const { dbName, users_collection } = require('config').get('MongoDb');
 
@@ -7,9 +8,10 @@ async function getUsersCollectionCon() {
     return db.collection(users_collection);
 }
 
-async function getUserDetails() {
+
+async function getUserDetails(userId) {
     const db = await getUsersCollectionCon();
-    return db.find().toArray();
+    return db.find({ _id: new ObjectId(userId) }).toArray();
 }
 
 async function createUserDetails() {
