@@ -1,10 +1,11 @@
-const { redisClient } = require('../dbConnection/index');
+const { redisClient } = require('../../dbConnection/redis');
+const { getLinksData } = require('../repository/links');
 
-
-function getLinksForUser(req, res, next) {
-    // redisClient.get();
+async function getLinksForUser(req, res) {
+    const data = await getLinksData();
+    res.json({ data });
 }
-
+;
 function getLinksForUserCustomer(req, res, next){
    // redisClient.get();
 }
@@ -23,7 +24,7 @@ function deleteLinks(req, res, next) {
 
 }
 
-export {
+module.exports = {
     getLinksForUser,
     getLinksForUserCustomer,
 

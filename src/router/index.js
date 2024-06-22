@@ -1,11 +1,13 @@
 const router = require('express').Router();
-const { getLinksForUser, getLinksForUserCustomer } = require('../service/linksService');
+const linksRouter = require('./links-router');
+const userRouter = require('./user-router');
 
 
 
-router.get('/:id', getLinksForUser);
+router.use('/links', linksRouter);
+router.use('/users', userRouter)
 
-router.get('/:username', getLinksForUserCustomer);
+// router.get('/links/:username', getLinksForUserCustomer);
 
 // router.get('/links', getLinks);
 
@@ -15,6 +17,6 @@ router.get('/:username', getLinksForUserCustomer);
 
 // router.delete();
 
-router.use('/links', )
+// router.use('/links', )
 
-export default router;
+module.exports = router;

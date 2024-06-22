@@ -1,9 +1,9 @@
 
-const { checkConnection } = require('./src/dbConnection/index');
+const { getConnection } = require('./dbConnection/mongo');
 const initApp = require('./src/app');
 
 async function init(){
-    checkConnection().then(() => {
+    getConnection().then(() => {
         initApp();
     }) ;
 }

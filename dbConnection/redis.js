@@ -1,10 +1,8 @@
 
-import { createClient } from 'redis';
+const { createClient } = require('redis');
 
 function initiateConnection(){
-    return createClient({
-        url: 'redis://alice:foobared@awesome.redis.server:6380'
-      });
+    return createClient();
 }
 
 const redisClient = initiateConnection();
@@ -16,7 +14,7 @@ const redisClient = initiateConnection();
   await redisClient.connect();
 })();
 
-export default {
+module.exports =  {
     getConnection: async () => {
         const conn = createClient({
             url: 'redis://alice:foobared@awesome.redis.server:6380'
