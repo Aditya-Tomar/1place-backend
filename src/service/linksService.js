@@ -5,7 +5,7 @@ async function getLinksForUser(req, res) {
     const data = await getLinksData();
     res.json({ data });
 }
-;
+
 function getLinksForUserCustomer(req, res, next){
    // redisClient.get();
 }

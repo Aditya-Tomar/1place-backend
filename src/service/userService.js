@@ -10,8 +10,9 @@ async function createUser(req, res) {
     try {
         const userDetails = req.body;
         await createUserDetails(userDetails);
-        res.status(200).send();
+        res.status(200).send(userDetails);
     } catch (err) {
+        console.log('err', err);
         res.status(400).send();
     }
 }

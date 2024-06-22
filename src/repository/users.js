@@ -15,8 +15,13 @@ async function getUserDetails(userId) {
 }
 
 async function createUserDetails(userDetails) {
-    const db = await getUsersCollectionCon();
-    return db.insert(userDetails);
+    try {
+        const db = await getUsersCollectionCon();
+        return db.insertOne(userDetails);
+    } catch (e) {
+        console.log('Error while inserting user data in db ', e);
+        throw err;
+    }
 }
 
 module.exports = {
